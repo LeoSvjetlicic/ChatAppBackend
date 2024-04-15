@@ -26,7 +26,7 @@ admin.initializeApp({ // Using admin.initializeApp instead of initializeAdminApp
 const app = express();
 app.use(bodyParser.json());
 
-const port = 8080;
+const port = process.env.PORT || 4000;
 const notificationOptions = {
   priority: 'high',
   timeToLive: 60 * 60 * 24
@@ -49,6 +49,6 @@ app.post('/firebase/notification', (req, res) => {
     });
 });
 
-app.listen(port, 'localhost', () => {
+app.listen(port,() => {
   console.log('Listening to port ' + port);
 });
